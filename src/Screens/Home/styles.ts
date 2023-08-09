@@ -1,11 +1,20 @@
 import styled from "styled-components/native";
 import { Hamburger } from 'phosphor-react-native';
+import { PieChart } from 'react-native-svg-charts';
 
 export const Container = styled.View`
     background-color: ${({ theme }) => theme.COLORS.WHITE};
     flex: 1;
     padding-top: 20px;
 `;
+
+export const GroupButtonsHeader = styled.View`
+    flex-direction: row;
+    justify-content: space-between;
+    padding-left: 10px;
+    padding-right: 10px;
+`;
+
 export const Title = styled.Text`
     color: ${({ theme }) => theme.COLORS.BLACK};
 `;
@@ -20,10 +29,10 @@ export const Grafic = styled.View`
 `;
 
 export const Balance = styled.View`
-    flex: 1;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin-right: 15px;
 `;
 
 export const Price = styled.Text`
@@ -36,12 +45,9 @@ export const Description = styled.Text`
     font-size: 18px;
 `;
 
-export const ImageGrafic = styled.Image`
-    margin-right: 10px;
-    width: 100px;
-    height: 100px;
-    background-color: ${({ theme }) => theme.COLORS.RED};
-    border-radius: 50px;
+export const ImageGrafic = styled(PieChart)`
+    width: 150px;
+    height: 150px;
 `;
 
 export const TitleTransactions = styled.Text`

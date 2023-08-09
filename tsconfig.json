@@ -9,9 +9,6 @@
       "@components/*": [
         "./src/Components/*"
       ],
-      "@routes/*": [
-        "./src/Routes/*"
-      ],
       "@screens/*": [
         "./src/Screens/*"
       ],

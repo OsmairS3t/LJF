@@ -1,5 +1,8 @@
 import Header from '@components/Header';
-import { Container, 
+import { PieChart } from 'react-native-svg-charts';
+import {
+    Container,
+    GroupButtonsHeader,
     Grafic,
     Balance,
     Price,
@@ -11,20 +14,58 @@ import { Container,
     IconTransaction,
     TextTransaction,
     PriceTransaction
- } from './styles';
-
-import { CaretLeft } from 'phosphor-react-native'
+} from './styles';
+import { Button } from '@components/Forms/Button';
+import Footer from '@components/Footer';
+import { useNavigation } from '@react-navigation/native'
 
 export function Home() {
+    const navigation = useNavigation();
+    const data = [
+        {
+            key: 1,
+            value: 100,
+            svg: { fill: '#FF9B04' },
+            arc: { outerRadius: '130%', cornerRadius: 10, }
+        },
+        {
+            key: 2,
+            value: 50,
+            svg: { fill: '#F65050' }
+        },
+        {
+            key: 3,
+            value: 40,
+            svg: { fill: '#0CB509' }
+        }
+    ]
+
+    function handleNewBalance() {
+        navigation.navigate('balance')
+    }
+
     return (
         <Container>
             <Header />
+            <GroupButtonsHeader>
+                <Button.root>
+                    <Button.title title="Listar Lançamentos" />
+                </Button.root>
+                <Button.root>
+                    <Button.title title="+ Lançamento" />
+                </Button.root>
+            </GroupButtonsHeader>
             <Grafic>
                 <Balance>
                     <Price>R$ 930,00</Price>
                     <Description>Total Balanço</Description>
                 </Balance>
-                <ImageGrafic></ImageGrafic>
+                <ImageGrafic
+                    style={{ height: 500 }}
+                    outerRadius={'70%'}
+                    innerRadius={10}
+                    data={data}
+                />
             </Grafic>
             <TitleTransactions>ÚLTIMOS LANÇAMENTOS</TitleTransactions>
             <Transactions>
@@ -52,6 +93,7 @@ export function Home() {
                     <PriceTransaction>100,00</PriceTransaction>
                 </Transaction>
             </Transactions>
+            <Footer />
         </Container>
     )
 }
