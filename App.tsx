@@ -11,8 +11,8 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <StatusBar
-        barStyle="dark-content"
-        backgroundColor="transparent"
+        barStyle="light-content"
+        backgroundColor="black"
         translucent
       />
       {fontsLoaded ? <Home /> : <Loading />}

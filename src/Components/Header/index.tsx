@@ -1,18 +1,23 @@
 import React from 'react';
 
-import { Container, Logo, TextGroup, Title, SubTitle } from './styles';
-import logoLuzJovem from '@assets/logo.png'
-import logoFarol from '@assets/farol.png'
+import { Container, 
+    Logo, 
+    TextGroup, 
+    Title, 
+    SubTitle, 
+    IconSignOut
+ } from './styles';
+import logoLuzJovem from '@assets/luzjovem.png'
 
 export default function Header() {
     return (
         <Container>
             <Logo source={logoLuzJovem} />
             <TextGroup>
-                <Title>FINANCEIRO</Title>
+                <Title>TESOURARIA</Title>
                 <SubTitle>Luz Jovem Anápolis</SubTitle>
             </TextGroup>
-            <Logo source={logoFarol} />
+            <IconSignOut size={35} color='#FFFFFF' />
         </Container>
     )
 }
