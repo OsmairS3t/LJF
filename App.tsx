@@ -4,6 +4,8 @@ import theme from './src/theme';
 import { useFonts, Roboto_400Regular, Roboto_700Bold } from '@expo-google-fonts/roboto'
 import { Routes } from './src/Routes';
 import { Loading } from '@components/Loading';
+import Header from '@components/Header';
+import Footer from '@components/Footer';
 
 export default function App() {
   const [fontsLoaded] = useFonts({ Roboto_400Regular, Roboto_700Bold });
@@ -15,7 +17,16 @@ export default function App() {
         backgroundColor="black"
         translucent
       />
-      {fontsLoaded ? <Routes /> : <Loading />}
+      {
+        fontsLoaded ?
+          <>
+            <Header />
+            <Routes />
+            <Footer />
+          </>
+          :
+          <Loading />
+      }
     </ThemeProvider>
   );
 }

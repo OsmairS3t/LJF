@@ -1,4 +1,6 @@
 import React from 'react';
+import Header from '@components/Header';
+import Footer from '@components/Footer';
 
 import {
     Container,
@@ -20,7 +22,6 @@ export function Balance() {
             <Form>
                 <InputForm>
                     <Label>Categoria:</Label>
-                    <button></button>
                 </InputForm>
             </Form>
         </Container>

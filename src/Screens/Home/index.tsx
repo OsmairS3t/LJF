@@ -46,7 +46,6 @@ export function Home() {
 
     return (
         <Container>
-            <Header />
             <GroupButtonsHeader>
                 <Button.root>
                     <Button.title title="Listar Lançamentos" />
@@ -93,7 +92,6 @@ export function Home() {
                     <PriceTransaction>100,00</PriceTransaction>
                 </Transaction>
             </Transactions>
-            <Footer />
         </Container>
     )
 }

@@ -1,12 +1,10 @@
+import { TextInputComponent } from 'react-native';
 import {
-    Container,
-    Title
+    Container
 } from './styles';
 
 export default function Input() {
     return (
-        <Container>
-
-        </Container>
+        <Container />
     )
 }
