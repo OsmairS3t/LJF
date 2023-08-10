@@ -1,8 +1,9 @@
-import Header from '@components/Header';
-import { PieChart } from 'react-native-svg-charts';
 import {
     Container,
     GroupButtonsHeader,
+    ButtonNavigate,
+    TextButtonList,
+    TextButtonNew,
     Grafic,
     Balance,
     Price,
@@ -16,7 +17,6 @@ import {
     PriceTransaction
 } from './styles';
 import { Button } from '@components/Forms/Button';
-import Footer from '@components/Footer';
 import { useNavigation } from '@react-navigation/native'
 
 export function Home() {
@@ -40,6 +40,10 @@ export function Home() {
         }
     ]
 
+    function handleListBalance() {
+        navigation.navigate('listbalance')
+    }
+
     function handleNewBalance() {
         navigation.navigate('balance')
     }
@@ -47,12 +51,12 @@ export function Home() {
     return (
         <Container>
             <GroupButtonsHeader>
-                <Button.root>
-                    <Button.title title="Listar Lançamentos" />
-                </Button.root>
-                <Button.root>
-                    <Button.title title="+ Lançamento" />
-                </Button.root>
+                <ButtonNavigate onPress={handleListBalance}>
+                    <TextButtonList>Listar Lançamentos</TextButtonList>
+                </ButtonNavigate>
+                <ButtonNavigate onPress={handleNewBalance}>
+                    <TextButtonNew>+ Lançamento</TextButtonNew>
+                </ButtonNavigate>
             </GroupButtonsHeader>
             <Grafic>
                 <Balance>

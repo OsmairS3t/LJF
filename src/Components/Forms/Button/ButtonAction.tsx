@@ -1,10 +1,10 @@
-import { Button } from 'react-native'
+import { Button, ButtonProps } from 'react-native'
 
-interface ButtonActionProps {
-  onPress?: ()=>void;
+interface ButtonActionProps extends ButtonProps {
+  onPress?: () => void;
 }
 
-export function ButtonAction({onPress}:ButtonActionProps) {
+export function ButtonAction({ onPress }: ButtonActionProps) {
   return (
     <Button onPress={onPress} title='' />
   )

@@ -1,10 +1,16 @@
-import { TextInputComponent } from 'react-native';
+
 import {
-    Container
+    Container, Label, InputText
 } from './styles';
 
-export default function Input() {
+interface Props {
+    label?: string;
+}
+export default function Input({ label }: Props) {
     return (
-        <Container />
+        <Container>
+            <Label>{label}</Label>
+            <InputText />
+        </Container>
     )
 }

@@ -5,7 +5,7 @@ import { PieChart } from 'react-native-svg-charts';
 export const Container = styled.View`
     background-color: ${({ theme }) => theme.COLORS.WHITE};
     flex: 1;
-    padding-top: 20px;
+    padding-top: 5px;
 `;
 
 export const GroupButtonsHeader = styled.View`
@@ -14,6 +14,19 @@ export const GroupButtonsHeader = styled.View`
     padding-left: 10px;
     padding-right: 10px;
 `;
+
+export const ButtonNavigate = styled.TouchableOpacity`
+    background-color: ${({ theme }) => theme.COLORS.GRAY_100};
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 5px;
+    min-height: 30px;
+    max-height: 30px;
+`;
+
+export const TextButtonList = styled.Text``;
+
+export const TextButtonNew = styled.Text``;
 
 export const Title = styled.Text`
     color: ${({ theme }) => theme.COLORS.BLACK};

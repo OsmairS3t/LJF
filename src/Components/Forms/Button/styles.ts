@@ -2,14 +2,13 @@ import styled from "styled-components/native";
 import { CaretLeft } from 'phosphor-react-native';
 
 export const Container = styled.TouchableOpacity`
+    width: 100%;
+    max-height: 60px;
+    min-height: 60px;
+    border-radius: 8px;
     align-items: center;
     justify-content: center;
-    width: 180px;
-    margin-top: 3px;
-    margin-bottom: 2px;
-    padding: 5px;
-    border-radius: 8px;
-    background-color: ${({ theme }) => theme.COLORS.GRAY_200};
+    background-color: ${({ theme }) => theme.COLORS.GREEN_700};
 `;
 
 export const BackButton = styled.TouchableOpacity``;
@@ -20,5 +19,7 @@ export const Icon = styled(CaretLeft).attrs(({ theme })=>({
 }))``;
 
 export const Title = styled.Text`
-    font-family: ${({ theme }) => theme.FONT_FAMILY.REGULAR};
+    font-family: ${({ theme }) => theme.FONT_FAMILY.BOLD};
+    font-size: ${({ theme }) => theme.FONT_SIZE.XL}px;
+    color: ${({ theme }) => theme.COLORS.WHITE};
 `;

@@ -2,12 +2,9 @@ import styled from 'styled-components/native'
 import { CaretLeft } from 'phosphor-react-native'
 
 export const Container = styled.View`
+    flex: 1;
+    justify-content: space-between;
     background-color: ${({ theme }) => theme.COLORS.WHITE};
-`;
-
-export const GroupHeaderBalance = styled.View`
-    flex-direction: row;
-    align-items: center;
 `;
 
 export const Icon = styled(CaretLeft).attrs(({theme})=>({
@@ -24,8 +21,11 @@ export const Form = styled.View`
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
+    padding: 10px;
 `;
 
-export const InputForm = styled.View``;
+export const ContainerButton = styled.View`
+    width: 100%;
+    padding: 20px;
+`;
 
-export const Label = styled.Text``;

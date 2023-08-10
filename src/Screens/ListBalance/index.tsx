@@ -1,11 +1,17 @@
-import React from 'react';
+import Highlight from '@components/Highlight';
+import { useNavigation } from '@react-navigation/native';
 
 import { Container, Title } from './styles';
 
 export function ListBalance() {
+    const navigation = useNavigation();
+
+    function handleBack() {
+        navigation.navigate('home')
+    }
     return (
         <Container>
-            <Title>Saídas</Title>
+            <Highlight onPress={handleBack} title="LANÇAMENTOS" />
         </Container>
     )
 }
