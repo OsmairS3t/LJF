@@ -1,3 +1,6 @@
+import { useState } from 'react';
+import { FlatList } from 'react-native';
+import Transaction from '@components/Transaction';
 import {
     Container,
     GroupButtonsHeader,
@@ -9,18 +12,16 @@ import {
     Price,
     Description,
     ImageGrafic,
-    TitleTransactions,
-    Transactions,
-    Transaction,
-    IconTransaction,
-    TextTransaction,
-    PriceTransaction
+    TitleTransactions
 } from './styles';
-import { Button } from '@components/Forms/Button';
-import { useNavigation } from '@react-navigation/native'
+import { useNavigation } from '@react-navigation/native';
+import { Category, Balances } from '@utils/database';
+import { IBalance, ICategory } from '@utils/interfaces';
 
 export function Home() {
     const navigation = useNavigation();
+    const [balances, setBalances] = useState<IBalance[]>(Balances)
+    const [categories, setCategories] = useState<ICategory[]>(Category)
     const data = [
         {
             key: 1,
@@ -37,6 +38,11 @@ export function Home() {
             key: 3,
             value: 40,
             svg: { fill: '#0CB509' }
+        },
+        {
+            key: 4,
+            value: 30,
+            svg: { fill: '#49B6D9' }
         }
     ]
 
@@ -71,31 +77,14 @@ export function Home() {
                 />
             </Grafic>
             <TitleTransactions>ÚLTIMOS LANÇAMENTOS</TitleTransactions>
-            <Transactions>
-                <Transaction>
-                    <IconTransaction></IconTransaction>
-                    <TextTransaction>Coca-cola Lata 350ml</TextTransaction>
-                    <PriceTransaction>35,00</PriceTransaction>
-                </Transaction>
-
-                <Transaction>
-                    <IconTransaction></IconTransaction>
-                    <TextTransaction>Oferta</TextTransaction>
-                    <PriceTransaction>10,00</PriceTransaction>
-                </Transaction>
-
-                <Transaction>
-                    <IconTransaction></IconTransaction>
-                    <TextTransaction>Balas diversas</TextTransaction>
-                    <PriceTransaction>5,00</PriceTransaction>
-                </Transaction>
-
-                <Transaction>
-                    <IconTransaction></IconTransaction>
-                    <TextTransaction>Inscrição conferência</TextTransaction>
-                    <PriceTransaction>100,00</PriceTransaction>
-                </Transaction>
-            </Transactions>
+            <FlatList
+                data={balances}
+                keyExtractor={item => item.id.toString()}
+                renderItem={({ item }) => (
+                    <Transaction balance={item} />
+                )}
+                showsVerticalScrollIndicator={false}
+            />
         </Container>
     )
 }

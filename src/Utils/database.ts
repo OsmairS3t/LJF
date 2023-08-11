@@ -1,19 +1,27 @@
 export const Category = [
     {
         id: 1,
-        name: 'Lanchonete'
+        name: 'Lanchonete',
+        icon: 'fastfood',
+        color: '#FF9B04'
     },
     {
         id: 2,
-        name: 'Ofertas'
+        name: 'Ofertas',
+        icon: 'money',
+        color: '#F65050'
     },
     {
         id: 3,
-        name: 'Eventos'
+        name: 'Eventos',
+        icon: 'event-note',
+        color: '#0CB509'
     },
     {
         id: 4,
-        name: 'Produtos'
+        name: 'Produtos',
+        icon: 'qr-code',
+        color: '#49B6D9'
     }
 ]
 

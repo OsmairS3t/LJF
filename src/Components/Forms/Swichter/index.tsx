@@ -2,7 +2,6 @@ import { useState } from 'react'
 
 import {
     Container,
-    Label,
     BgContainer,
     SwContainerLeft,
     SwContainerRight,
@@ -25,7 +24,6 @@ export function Switcher({ isEnabled, setIsEnabled }: SwichtProps) {
 
     return (
         <Container>
-            <Label>Tipo:</Label>
             <BgContainer>
                 <SwContainerLeft isEnabled={enabled} onPress={toggleSwitch}>
                     <SwTextLeft>Entrada</SwTextLeft>

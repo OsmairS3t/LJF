@@ -1,9 +1,9 @@
-import { TextInputProps } from 'react-native';
-import { useTheme } from 'styled-components/native';
+import { TextInputProps } from 'react-native'
+import { useTheme } from 'styled-components/native'
 
 import { Container } from './styles';
 
-export function Select({ ...rest }: TextInputProps) {
+export function InputForm({ ...rest }: TextInputProps) {
     const { COLORS } = useTheme();
     return (
         <Container

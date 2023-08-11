@@ -16,7 +16,6 @@ export const GroupButtonsHeader = styled.View`
 `;
 
 export const ButtonNavigate = styled.TouchableOpacity`
-    background-color: ${({ theme }) => theme.COLORS.GRAY_100};
     padding-left: 5px;
     padding-right: 5px;
     border-radius: 5px;
@@ -24,9 +23,13 @@ export const ButtonNavigate = styled.TouchableOpacity`
     max-height: 30px;
 `;
 
-export const TextButtonList = styled.Text``;
+export const TextButtonList = styled.Text`
+    font-family: ${({ theme }) => theme.FONT_FAMILY.BOLD};
+`;
 
-export const TextButtonNew = styled.Text``;
+export const TextButtonNew = styled.Text`
+    font-family: ${({ theme }) => theme.FONT_FAMILY.BOLD};
+`;
 
 export const Title = styled.Text`
     color: ${({ theme }) => theme.COLORS.BLACK};
@@ -71,34 +74,3 @@ export const TitleTransactions = styled.Text`
     margin-bottom: 10px;
 `;
 
-export const Transactions = styled.View`
-    flex: 1;
-`;
-
-export const Transaction = styled.View`
-    padding: 10px;
-    border-radius: 10px;
-    margin-bottom: 3px;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    background-color: ${({ theme }) => theme.COLORS.GRAY_100};
-`;
-
-export const IconTransaction = styled(Hamburger)`
-    width: 24px;
-    height: 24px;
-`;
-
-export const TextTransaction = styled.Text`
-    flex: 1;    
-    margin-left: 10px;
-    margin-right: 10px;
-    font-size: 18px;
-    font-family: ${({theme})=>theme.FONT_FAMILY.REGULAR};
-`;
-
-export const PriceTransaction = styled.Text`
-    font-size: 18px;
-    font-family: ${({theme})=>theme.FONT_FAMILY.REGULAR};
-`;

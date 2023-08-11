@@ -1,10 +1,11 @@
 import { useState } from 'react';
-import { Switch } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import Highlight from '@components/Highlight';
+import { Category } from '@utils/database';
 
-import Input from '@components/Forms/Input';
+import Highlight from '@components/Highlight';
+import { Select } from '@components/Forms/Select';
 import { Switcher } from '@components/Forms/Swichter';
+import { InputForm } from '@components/Forms/InputForm';
 import { Button } from '@components/Forms/Button';
 
 import {
@@ -12,9 +13,9 @@ import {
     Form,
     ContainerButton,
 } from './styles';
-import Select from '@components/Forms/Select';
 
 export function Balance() {
+    const countries = ["Egypt", "Canada", "Australia", "Ireland"]
     const [isEnabled, setIsEnabled] = useState(false);
     const navigation = useNavigation();
 
@@ -26,10 +27,10 @@ export function Balance() {
         <Container>
             <Form>
                 <Highlight onPress={handleBack} title='Incluir Lançamentos' />
-                <Select label='Categoria' />
+                <Select placeholder='Categoria' />
                 <Switcher isEnabled={isEnabled} setIsEnabled={setIsEnabled} />
-                <Input label='Descrição:' key='description' />
-                <Input label='Valor:' key='price' />
+                <InputForm placeholder='Descrição' />
+                <InputForm placeholder='Valor' />
             </Form>
             <ContainerButton>
                 <Button.root>
