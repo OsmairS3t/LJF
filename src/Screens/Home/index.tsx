@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { FlatList } from 'react-native';
 import Transaction from '@components/Transaction';
+import { VictoryPie } from 'victory-native'
 import {
     Container,
     GroupButtonsHeader,
     ButtonNavigate,
     TextButtonList,
     TextButtonNew,
+    Chart,
     Grafic,
     Balance,
     Price,
@@ -24,24 +26,24 @@ export function Home() {
     const [categories, setCategories] = useState<ICategory[]>(Category)
     const data = [
         {
-            key: 1,
-            value: 100,
+            x: 'Lanchonete',
+            y: 100,
             svg: { fill: '#FF9B04' },
             arc: { outerRadius: '130%', cornerRadius: 10, }
         },
         {
-            key: 2,
-            value: 50,
+            x: 'Ofertas',
+            y: 50,
             svg: { fill: '#F65050' }
         },
         {
-            key: 3,
-            value: 40,
+            x: 'Eventos',
+            y: 40,
             svg: { fill: '#0CB509' }
         },
         {
-            key: 4,
-            value: 30,
+            x: 'Produtos',
+            y: 30,
             svg: { fill: '#49B6D9' }
         }
     ]
@@ -64,18 +66,12 @@ export function Home() {
                     <TextButtonNew>+ Lançamento</TextButtonNew>
                 </ButtonNavigate>
             </GroupButtonsHeader>
-            <Grafic>
-                <Balance>
-                    <Price>R$ 930,00</Price>
-                    <Description>Total Balanço</Description>
-                </Balance>
-                <ImageGrafic
-                    style={{ height: 500 }}
-                    outerRadius={'70%'}
-                    innerRadius={10}
+            <Chart>
+                <VictoryPie
                     data={data}
+                    colorScale={["tomato", "orange", "gold", "cyan", "navy"]}
                 />
-            </Grafic>
+            </Chart>
             <TitleTransactions>ÚLTIMOS LANÇAMENTOS</TitleTransactions>
             <FlatList
                 data={balances}

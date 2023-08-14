@@ -11,4 +11,5 @@ export interface IBalance {
     name: string;
     price: number;
     datebalance: string;
+    file?: string;
 }

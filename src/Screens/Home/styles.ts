@@ -1,5 +1,4 @@
 import styled from "styled-components/native";
-import { Hamburger } from 'phosphor-react-native';
 import { PieChart } from 'react-native-svg-charts';
 
 export const Container = styled.View`
@@ -34,11 +33,18 @@ export const TextButtonNew = styled.Text`
 export const Title = styled.Text`
     color: ${({ theme }) => theme.COLORS.BLACK};
 `;
+export const Chart = styled.View`
+    width: 100%;
+    padding: 10px;
+    align-items: center;
+`;
 
 export const Grafic = styled.View`
     margin-top: 5px;
     height: 200px;
     background-color: ${({ theme }) => theme.COLORS.GRAY_100};
+    border-width: 1px;
+    border-color: ${({ theme }) => theme.COLORS.GRAY_100};
     flex-direction: row;
     align-items: center;
     justify-content: center;

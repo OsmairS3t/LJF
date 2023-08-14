@@ -32,7 +32,8 @@ export const Balances = [
         typebalance: 'income', 
         name: 'Coca-cola Lata 350ml',
         price: 35,
-        datebalance: '01/08/2023'
+        datebalance: '01/08/2023',
+        file: 'file001.png'
     },
     {
         id: 2,
@@ -40,7 +41,8 @@ export const Balances = [
         typebalance: 'income', 
         name: 'Luz Jovem',
         price: 10,
-        datebalance: '01/08/2023'
+        datebalance: '01/08/2023',
+        file: 'file001.png'
     },
     {
         id: 3,
@@ -48,7 +50,8 @@ export const Balances = [
         typebalance: 'income', 
         name: 'Balas diversas',
         price: 29,
-        datebalance: '03/08/2023'
+        datebalance: '03/08/2023',
+        file: 'file001.png'
     },
     {
         id: 4,
@@ -56,7 +59,8 @@ export const Balances = [
         typebalance: 'income', 
         name: 'Inscrição conferência',
         price: 100,
-        datebalance: '04/08/2023'
+        datebalance: '04/08/2023',
+        file: 'file001.png'
     },
     {
         id: 5,
@@ -64,7 +68,8 @@ export const Balances = [
         typebalance: 'income', 
         name: 'Salgados congelados',
         price: 80,
-        datebalance: '04/08/2023'
+        datebalance: '04/08/2023',
+        file: 'file001.png'
     },
     {
         id: 6,
@@ -72,7 +77,8 @@ export const Balances = [
         typebalance: 'income', 
         name: 'Camisetas',
         price: 500,
-        datebalance: '04/08/2023'
+        datebalance: '04/08/2023',
+        file: 'file001.png'
     },
     {
         id: 7,
@@ -80,7 +86,8 @@ export const Balances = [
         typebalance: 'outcome', 
         name: 'Camiseta',
         price: 50,
-        datebalance: '10/08/2023'
+        datebalance: '10/08/2023',
+        file: 'file001.png'
     },
     {
         id: 8,
@@ -88,7 +95,8 @@ export const Balances = [
         typebalance: 'outcome', 
         name: 'Salgado',
         price: 5,
-        datebalance: '10/08/2023'
+        datebalance: '10/08/2023',
+        file: 'file001.png'
     }
 ]
 
