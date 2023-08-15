@@ -13,3 +13,11 @@ export interface IBalance {
     datebalance: string;
     file?: string;
 }
+
+export interface IResumeBalance {
+    id: number;
+    name: string;
+    value: number;
+    datebalance: string;
+    color: string;
+}

@@ -100,3 +100,33 @@ export const Balances = [
     }
 ]
 
+export const ResumeBalances = [
+    {
+        id: 1,
+        name: 'Lanchonete',
+        value: 50,
+        datebalance: '01/08/2023',
+        color: '#FF9B04'
+    },
+    {
+        id: 2,
+        name: 'Ofertas',
+        value: 32,
+        datebalance: '01/08/2023',
+        color: '#F65050'
+    },
+    {
+        id: 3,
+        name: 'Eventos',
+        value: 10,
+        datebalance: '01/08/2023',
+        color: '#0CB509'
+    },
+    {
+        id: 4,
+        name: 'Produtos',
+        value: 72,
+        datebalance: '01/08/2023',
+        color: '#49B6D9'
+    }
+]
