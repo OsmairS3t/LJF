@@ -59,7 +59,7 @@ export const Balances = [
         typebalance: 'income', 
         name: 'Inscrição conferência',
         price: 100,
-        datebalance: '04/08/2023',
+        datebalance: '01/08/2023',
         file: 'file001.png'
     },
     {
@@ -77,7 +77,7 @@ export const Balances = [
         typebalance: 'income', 
         name: 'Camisetas',
         price: 500,
-        datebalance: '04/08/2023',
+        datebalance: '01/08/2023',
         file: 'file001.png'
     },
     {

@@ -6,11 +6,3 @@ export const Container = styled.View`
     align-items: center;
 `;
 
-export const Block = styled.View`
-    padding: 5px;
-    position: absolute;
-    background-color: azure;
-    flex-direction: row;
-    justify-content: space-between;
-    gap: 5px;
-`;

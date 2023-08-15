@@ -1,7 +1,8 @@
 import styled from "styled-components/native";
-import { PieChart } from 'react-native-svg-charts';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { List, Plus } from 'phosphor-react-native'
 
-export const Container = styled.View`
+export const Container = styled.SafeAreaView`
     background-color: ${({ theme }) => theme.COLORS.WHITE};
     flex: 1;
     padding-top: 5px;
@@ -10,8 +11,7 @@ export const Container = styled.View`
 export const GroupButtonsHeader = styled.View`
     flex-direction: row;
     justify-content: space-between;
-    padding-left: 10px;
-    padding-right: 10px;
+    align-items: center;
 `;
 
 export const ButtonNavigate = styled.TouchableOpacity`
@@ -20,6 +20,14 @@ export const ButtonNavigate = styled.TouchableOpacity`
     border-radius: 5px;
     min-height: 30px;
     max-height: 30px;
+`;
+
+export const ListBalances = styled(List)``;
+
+export const NewBalances = styled(Plus)``;
+
+export const GroupInput = styled.View`
+    width: 50%;
 `;
 
 export const TextButtonList = styled.Text`

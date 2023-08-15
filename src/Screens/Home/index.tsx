@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FlatList } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
@@ -10,15 +10,22 @@ import {
     Container,
     GroupButtonsHeader,
     ButtonNavigate,
-    TextButtonList,
-    TextButtonNew,
+    ListBalances,
+    NewBalances,
+    GroupInput,
     TitleTransactions
 } from './styles';
+import { InputForm } from '@components/Forms/InputForm';
 
 export function Home() {
     const navigation = useNavigation();
-    const [balances, setBalances] = useState<IBalance[]>(Balances)
+    const [dateBalance, setDateBalance] = useState('01/08/2023')
+    const [balances, setBalances] = useState<IBalance[]>([])
     const [categories, setCategories] = useState<ICategory[]>(Category)
+
+    useEffect(() => {
+        setBalances(Balances.filter(balance => balance.datebalance === dateBalance))
+    }, [dateBalance])
 
     function handleListBalance() {
         navigation.navigate('listbalance')
@@ -32,16 +39,23 @@ export function Home() {
         <Container>
             <GroupButtonsHeader>
                 <ButtonNavigate onPress={handleListBalance}>
-                    <TextButtonList>Listar Lançamentos</TextButtonList>
+                    <ListBalances size={50} />
                 </ButtonNavigate>
+                <GroupInput>
+                    <InputForm
+                        placeholder='10/08/2023'
+                        onChangeText={setDateBalance}
+                        value={dateBalance}
+                    />
+                </GroupInput>
                 <ButtonNavigate onPress={handleNewBalance}>
-                    <TextButtonNew>+ Lançamento</TextButtonNew>
+                    <NewBalances size={50} />
                 </ButtonNavigate>
             </GroupButtonsHeader>
 
-            <Graphic />
+            <Graphic dateBalance={dateBalance} setDateBalance={() => setDateBalance} />
 
-            <TitleTransactions>ÚLTIMOS LANÇAMENTOS</TitleTransactions>
+            <TitleTransactions>LANÇAMENTOS DE {dateBalance}</TitleTransactions>
             <FlatList
                 data={balances}
                 keyExtractor={item => item.id.toString()}

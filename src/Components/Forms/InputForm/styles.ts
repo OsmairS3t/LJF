@@ -1,5 +1,5 @@
 import styled from "styled-components/native";
-import {TextInput} from 'react-native';
+import { TextInput } from 'react-native';
 
 export const Container = styled(TextInput)`
     flex: 1;
