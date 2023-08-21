@@ -1,4 +1,4 @@
-export const Category = [
+export const Categories = [
     {
         id: 1,
         name: 'Lanchonete',
@@ -9,7 +9,7 @@ export const Category = [
         id: 2,
         name: 'Ofertas',
         icon: 'money',
-        color: '#F65050'
+        color: '#E242FC'
     },
     {
         id: 3,
@@ -98,6 +98,41 @@ export const Balances = [
         datebalance: '10/08/2023',
         file: 'file001.png'
     }
+]
+
+export const ResumeCategory = [
+    {
+        idcategory: 1,
+        iconcategory: 'fastfood',
+        namecategory: 'Lanchonete', 
+        colorcategory: '#FF9B04',
+        balancecategory: 50,
+        datebalance: '01/08/2023'
+    },
+    {
+        idcategory: 2,
+        iconcategory: 'money',
+        namecategory: 'Ofertas',
+        colorcategory: '#E242FC',
+        balancecategory: 35,
+        datebalance: '01/08/2023'
+    },
+    {
+        idcategory: 3,
+        iconcategory: 'event-note',
+        namecategory: 'Eventos',
+        colorcategory: '#0CB509',
+        balancecategory: 20,
+        datebalance: '01/08/2023'
+    },
+    {
+        idcategory: 4,
+        iconcategory: 'qr-code',
+        namecategory: 'Produtos',
+        colorcategory: '#49B6D9',
+        balancecategory: 40,
+        datebalance: '01/08/2023'
+    },
 ]
 
 export const ResumeBalances = [

@@ -2,6 +2,7 @@ export interface ICategory {
     id: number;
     name: string;
     icon: string;
+    color: string;
 }
 
 export interface IBalance {
@@ -12,6 +13,15 @@ export interface IBalance {
     price: number;
     datebalance: string;
     file?: string;
+}
+
+export interface IResumeCategory {
+    idcategory: number;
+    iconcategory: string;
+    namecategory: string;
+    colorcategory: string;
+    balancecategory: number;
+    datebalance: string;
 }
 
 export interface IResumeBalance {

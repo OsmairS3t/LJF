@@ -8,12 +8,13 @@ import {
 
 interface HighlightProps {
     title: string;
+    colorBG?: string;
     onPress: () => void;
 }
 
-export default function Highlight({ title, onPress }: HighlightProps) {
+export default function Highlight({ title, colorBG, onPress }: HighlightProps) {
     return (
-        <Container>
+        <Container colorBackground={colorBG}>
             <ButtonHighlightIcon onPress={onPress}>
                 <Icon />
             </ButtonHighlightIcon>

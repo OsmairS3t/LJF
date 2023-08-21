@@ -1,31 +1,27 @@
 import { useState, useEffect } from 'react';
-import { FlatList } from 'react-native';
+import { FlatList, Button, Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-
-import { Category, Balances, ResumeBalances } from '@utils/database';
-import { IBalance, ICategory, IResumeBalance } from '@utils/interfaces';
+import { IResumeCategory } from '@utils/interfaces';
+import { Balances, Categories } from '@utils/database';
+import ResumeCategory from '@components/ResumeCategory';
 import { Graphic } from '@components/Graphic';
-import Transaction from '@components/Transaction';
+
 import {
     Container,
     GroupButtonsHeader,
     ButtonNavigate,
     ListBalances,
     NewBalances,
+    ButtonDate,
     GroupInput,
+    ListRsume,
     TitleTransactions
 } from './styles';
-import { InputForm } from '@components/Forms/InputForm';
 
 export function Home() {
     const navigation = useNavigation();
+    const [resumes, setResumes] = useState<IResumeCategory[]>([])
     const [dateBalance, setDateBalance] = useState('01/08/2023')
-    const [balances, setBalances] = useState<IBalance[]>([])
-    const [categories, setCategories] = useState<ICategory[]>(Category)
-
-    useEffect(() => {
-        setBalances(Balances.filter(balance => balance.datebalance === dateBalance))
-    }, [dateBalance])
 
     function handleListBalance() {
         navigation.navigate('listbalance')
@@ -35,35 +31,65 @@ export function Home() {
         navigation.navigate('balance')
     }
 
+    function resumeBalancesCategory(dateBalance: string) {
+        let sumCategory = 0;
+        let arrBalanceCategories: IResumeCategory[] = []
+        Categories.map(category => {
+            sumCategory = 0
+            const dataBalance = Balances
+                .filter(balance => balance.datebalance === dateBalance)
+                .filter(balance => balance.category === category.id)
+            dataBalance.map(data => {
+                sumCategory = sumCategory + data.price
+            })
+            const newData = {
+                idcategory: category.id,
+                iconcategory: category.icon,
+                namecategory: category.name,
+                colorcategory: category.color,
+                balancecategory: sumCategory,
+                datebalance: dateBalance
+            }
+            arrBalanceCategories.push(newData)
+        })
+        return arrBalanceCategories
+    }
+
+    useEffect(() => {
+        setResumes(resumeBalancesCategory(dateBalance))
+    }, [dateBalance])
+
     return (
         <Container>
             <GroupButtonsHeader>
                 <ButtonNavigate onPress={handleListBalance}>
-                    <ListBalances size={50} />
+                    <ListBalances size={30} />
                 </ButtonNavigate>
+
                 <GroupInput>
-                    <InputForm
-                        placeholder='10/08/2023'
-                        onChangeText={setDateBalance}
-                        value={dateBalance}
+                    <ButtonDate
+                        title={dateBalance}
+                        onPress={() => { }}
                     />
                 </GroupInput>
                 <ButtonNavigate onPress={handleNewBalance}>
-                    <NewBalances size={50} />
+                    <NewBalances size={30} />
                 </ButtonNavigate>
             </GroupButtonsHeader>
 
-            <Graphic dateBalance={dateBalance} setDateBalance={() => setDateBalance} />
+            <Graphic resumesCategory={resumes} />
 
-            <TitleTransactions>LANÇAMENTOS DE {dateBalance}</TitleTransactions>
-            <FlatList
-                data={balances}
-                keyExtractor={item => item.id.toString()}
-                renderItem={({ item }) => (
-                    <Transaction balance={item} />
-                )}
-                showsVerticalScrollIndicator={false}
-            />
+            <ListRsume>
+                <TitleTransactions>RESUMO DO DIA {dateBalance}</TitleTransactions>
+                <FlatList
+                    data={resumes}
+                    keyExtractor={item => item.idcategory.toString()}
+                    renderItem={({ item }) => (
+                        <ResumeCategory balanceCategory={item} />
+                    )}
+                    showsVerticalScrollIndicator={false}
+                />
+            </ListRsume>
         </Container>
     )
 }

@@ -4,7 +4,6 @@ import { List, Plus } from 'phosphor-react-native'
 
 export const Container = styled.SafeAreaView`
     background-color: ${({ theme }) => theme.COLORS.WHITE};
-    flex: 1;
     padding-top: 5px;
 `;
 
@@ -22,21 +21,15 @@ export const ButtonNavigate = styled.TouchableOpacity`
     max-height: 30px;
 `;
 
-export const ListBalances = styled(List)``;
-
-export const NewBalances = styled(Plus)``;
-
 export const GroupInput = styled.View`
     width: 50%;
 `;
 
-export const TextButtonList = styled.Text`
-    font-family: ${({ theme }) => theme.FONT_FAMILY.BOLD};
-`;
+export const ButtonDate = styled.Button``;
 
-export const TextButtonNew = styled.Text`
-    font-family: ${({ theme }) => theme.FONT_FAMILY.BOLD};
-`;
+export const ListBalances = styled(List)``;
+
+export const NewBalances = styled(Plus)``;
 
 export const TitleTransactions = styled.Text`
     font-family: ${({ theme }) => theme.FONT_FAMILY.BOLD};
@@ -46,3 +39,12 @@ export const TitleTransactions = styled.Text`
     margin-bottom: 10px;
 `;
 
+export const ListRsume = styled.View`
+    height: 65%;
+`;
+
+export const GroupGraphic = styled.View`
+    width: 100%;
+    height: 45%;
+    align-items: center;
+`;

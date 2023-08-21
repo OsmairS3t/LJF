@@ -4,6 +4,10 @@ export declare global {
             home: undefined;
             balance: undefined;
             listbalance: undefined;
+            detailcategory: {
+                idcategory: number;
+                datecategory: string;
+            };
         }
     }
 }
