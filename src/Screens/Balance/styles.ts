@@ -1,5 +1,6 @@
 import styled from 'styled-components/native'
 import { CaretLeft } from 'phosphor-react-native'
+import { Pressable } from 'react-native'
 
 export const Container = styled.View`
     flex: 1;
@@ -40,3 +41,21 @@ export const TextSwitch = styled.Text`
     padding-right: 5px;
 `;
 
+export const GroupImage = styled.View`
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 10px;
+`;
+
+export const BtnImage = styled.Pressable`
+    width: 100px;
+    height: 100px;
+    padding: 10px;
+    border: 1px dotted black;
+    justify-content: center;
+    align-items: center;
+`;
+
+export const BtnImageText = styled.Text`
+    color: black;
+`;

@@ -1,10 +1,10 @@
-import { useState } from 'react';
-import { Switch } from 'react-native';
+import { useEffect, useState } from 'react';
+import { Platform, Switch, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import * as ImagePicker from 'expo-image-picker';
 
 import Highlight from '@components/Highlight';
 import { Select } from '@components/Forms/Select';
-import { Switcher } from '@components/Forms/Swichter';
 import { InputForm } from '@components/Forms/InputForm';
 import { Button } from '@components/Forms/Button';
 
@@ -13,14 +13,17 @@ import {
     Form,
     ContainerButton,
     GroupSwitch,
-    TextSwitch
+    TextSwitch,
+    GroupImage,
+    BtnImage,
+    BtnImageText
 } from './styles';
+import { ImagePickerAsset } from 'expo-image-picker/build/ImagePicker.types';
 
 export function Balance() {
     const [typeTransformed, setTypeTransformed] = useState('Entrada')
     const [type, setType] = useState<string>('income')
-
-    const countries = ["Egypt", "Canada", "Australia", "Ireland"]
+    const [imgComprove, setImgComprove] = useState<string>('/assets/farol.png')
     const [isEnabled, setIsEnabled] = useState(false);
     const navigation = useNavigation();
 
@@ -37,6 +40,33 @@ export function Balance() {
             setType('income')
             setIsEnabled(!isEnabled)
             setTypeTransformed('Entrada')
+        }
+    }
+
+    async function LoadImage() {
+        if (Platform.OS !== 'web') {
+            const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync()
+            if (status !== 'granted') {
+                alert('Permission denied!')
+            }
+        }
+    }
+
+    useEffect(() => {
+        LoadImage();
+    }, [])
+
+    const PickImage = async () => {
+        let result = await ImagePicker.launchImageLibraryAsync({
+            mediaTypes: ImagePicker.MediaTypeOptions.All,
+            allowsEditing: true,
+            aspect: [4, 3],
+            quality: 1
+        })
+
+        console.log(result)
+        if (!result.canceled) {
+            setImgComprove(result.assets[0].uri)
         }
     }
 
@@ -59,6 +89,15 @@ export function Balance() {
                         value={isEnabled}
                     />
                 </GroupSwitch>
+                <GroupImage>
+                    <BtnImage onPress={PickImage}>
+                        <BtnImageText>Carregar Imagem</BtnImageText>
+                    </BtnImage>
+                    <Image source={{ uri: imgComprove }} style={{
+                        width: 200,
+                        height: 200
+                    }} />
+                </GroupImage>
             </Form>
             <ContainerButton>
                 <Button.root>

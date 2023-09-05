@@ -3,7 +3,7 @@ import {SignOut} from 'phosphor-react-native'
 
 export const Container = styled.View`
     background-color: ${({ theme }) => theme.COLORS.BLACK};
-    padding-top: 10px;
+    padding-top: 20px;
     width: 100%;
     height: 100px;
     padding-left: 5px;
