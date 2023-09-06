@@ -59,3 +59,10 @@ export const BtnImage = styled.Pressable`
 export const BtnImageText = styled.Text`
     color: black;
 `;
+
+export const TextButton = styled.Text`
+    text-align: center;
+    font-size: ${({ theme }) => theme.FONT_SIZE.XL}px;
+    color: ${({ theme }) => theme.COLORS.WHITE};
+`;
+

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Platform, Switch, Image } from 'react-native';
+import { Platform, Switch, Image, Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import * as ImagePicker from 'expo-image-picker';
 
@@ -16,15 +16,19 @@ import {
     TextSwitch,
     GroupImage,
     BtnImage,
-    BtnImageText
+    BtnImageText,
+    TextButton
 } from './styles';
-import { ImagePickerAsset } from 'expo-image-picker/build/ImagePicker.types';
 
 export function Balance() {
-    const [typeTransformed, setTypeTransformed] = useState('Entrada')
+    const [category, setCategory] = useState(0)
+    const [description, setDescription] = useState('')
+    const [price, setPrice] = useState(0)
+    const [dateBalance, setDateBalance] = useState('')
     const [type, setType] = useState<string>('income')
     const [imgComprove, setImgComprove] = useState<string>('/assets/farol.png')
     const [isEnabled, setIsEnabled] = useState(false);
+    const [typeTransformed, setTypeTransformed] = useState('Entrada')
     const navigation = useNavigation();
 
     function handleBack() {
@@ -50,6 +54,19 @@ export function Balance() {
                 alert('Permission denied!')
             }
         }
+    }
+
+    function handleSubmitForm() {
+        const data = {
+            id: 0,
+            category: category,
+            typebalance: type,
+            name: description,
+            price: price,
+            datebalance: dateBalance,
+            file: imgComprove
+        }
+        console.log(data)
     }
 
     useEffect(() => {
@@ -100,9 +117,9 @@ export function Balance() {
                 </GroupImage>
             </Form>
             <ContainerButton>
-                <Button.root>
-                    <Button.title title="Incluir" />
-                </Button.root>
+                <Button onPress={handleSubmitForm}>
+                    <TextButton>Incluir</TextButton>
+                </Button>
             </ContainerButton>
         </Container>
     )
