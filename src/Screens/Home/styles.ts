@@ -3,7 +3,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { List, Plus } from 'phosphor-react-native'
 
 export const Container = styled.SafeAreaView`
-    background-color: ${({ theme }) => theme.COLORS.WHITE};
+    background-color: ${({ theme }) => theme.COLORS.BG_SCREEN};
     padding-top: 5px;
 `;
 
@@ -34,6 +34,7 @@ export const NewBalances = styled(Plus)``;
 export const TitleTransactions = styled.Text`
     font-family: ${({ theme }) => theme.FONT_FAMILY.BOLD};
     font-size: ${({ theme }) => theme.FONT_SIZE.MD}px;
+    color: ${({ theme }) => theme.COLORS.TEXT_DEFAULT};
     text-align: center;
     margin-top: 10px;
     margin-bottom: 10px;

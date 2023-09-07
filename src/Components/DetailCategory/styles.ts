@@ -15,7 +15,7 @@ export const Title = styled.Text`
 export const GroupBlock = styled.View`
     border-top-width: 1px;
     border-style: dotted;
-    border-color: #000;
+    border-color: ${({ theme }) => theme.COLORS.BORDER_BLOCK};
     padding-bottom: 10px;
 `;
 
@@ -38,7 +38,7 @@ export const TextBlock = styled.Text`
 export const BlockSummary = styled.View`
     border-top-width: 1px;
     border-style: solid;
-    border-color: ${({ theme }) => theme.COLORS.BLACK};
+    border-color: ${({ theme }) => theme.COLORS.BORDER_BLOCK};
 `;
 
 export const TextResume = styled.Text`

@@ -8,5 +8,5 @@ export const Container = styled(Pressable)`
     border-radius: 8px;
     align-items: center;
     justify-content: center;
-    background-color: ${({ theme }) => theme.COLORS.GREEN_700};
+    background-color: ${({ theme }) => theme.COLORS.BG_BUTTON};
 `;

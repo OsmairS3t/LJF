@@ -13,12 +13,13 @@ export const MessageView = styled.View`
 `;
 
 export const MessageEmpty = styled.Text`
+    padding: 20px;
     width: 250px;
     height: 100px;
-    border: 1px solid gray;
-    border-style: dotted;
-    padding: 20px;
+    border: 1px;
     text-align: center;
-    color: ${({ theme }) => theme.COLORS.BLACK};
+    border-style: dotted;
+    border-color: ${({ theme }) => theme.COLORS.BORDER_INPUT};
+    color: ${({ theme }) => theme.COLORS.TEXT_DEFAULT};
 `;
 

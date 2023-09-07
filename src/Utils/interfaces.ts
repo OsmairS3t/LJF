@@ -9,7 +9,7 @@ export interface IBalance {
     id: number;
     category: number;
     typebalance: string;
-    name: string;
+    description: string;
     price: number;
     datebalance: string;
     file?: string;

@@ -18,7 +18,7 @@ export const ButtonHighlightIcon = styled.TouchableOpacity`
 
 export const Icon = styled(CaretLeft).attrs(({theme})=>({
     size: 30,
-    color: theme.COLORS.BLACK,
+    color: theme.COLORS.ICON_LIST,
 }))``;
 
 export const GroupTitle = styled.View`

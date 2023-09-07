@@ -1,22 +1,28 @@
 export default {
     COLORS: {
-      BLACK: '#000000',
+      LOADING: '#FFFFFF',
+
+      BG_APP: '#000000',
+      BG_SCREEN: '#FFFFFF',
+      BG_BLOCK: '#F5F5F5',
+      BG_BUTTON: '#00BCD6',
+      BG_INPUT: '#E1E1E6',
+
+      ICON_HEADER: '#FFFFFF',
+      ICON_LIST: '#000000',
+     
+      TITLE_APP: '#898989',
+      TITLE_SCREEN: '#000000',
+      TITLE_BUTTON: '#FFFFFF',
       
-      WHITE: '#FFFFFF',
-  
-      GREEN_700: '#00875F',
-      GREEN_500: '#00B37E',
-  
-      RED: '#F75A68',
-      RED_DARK: '#AA2834',
-  
-      GRAY_700: '#121214',
-      GRAY_600: '#202024',
-      GRAY_500: '#29292E',
-      GRAY_400: '#323238',
-      GRAY_300: '#7C7C8A',
-      GRAY_200: '#C4C4CC',
-      GRAY_100: '#E1E1E6'
+      TEXT_DEFAULT: '#000000',
+      TEXT_BLOCK: '#FFFFFF',
+      TEXT_INPUT: '#29292E',
+      
+      BORDER_INPUT: '#29292E',
+      BORDER_BLOCK: '#000000',
+
+      ERROR: '#FF1122'
     },
     FONT_FAMILY: {
       REGULAR: 'Roboto_400Regular',
