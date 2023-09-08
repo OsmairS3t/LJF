@@ -68,6 +68,12 @@ export const GroupImage = styled.View`
     gap: 10px;
 `;
 
+export const GroupButton = styled.View`
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 10px;
+`;
+
 export const ModalView = styled.Modal``;
 
 export const BtnImage = styled.Pressable`

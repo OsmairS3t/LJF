@@ -22,6 +22,7 @@ import {
     GroupSwitch,
     TextSwitch,
     GroupImage,
+    GroupButton,
     BtnImage,
     BtnImageText,
     TextButton
@@ -47,7 +48,7 @@ export function Balance() {
     const [typeTransformed, setTypeTransformed] = useState('Entrada')
     const [isEnabled, setIsEnabled] = useState(false);
     const [isSelectEmpty, setIsSelectEmpty] = useState(false);
-    const {handleSubmit, control, formState:{errors}} = useForm<FormDataProps>({
+    const { handleSubmit, control, formState: { errors } } = useForm<FormDataProps>({
         resolver: yupResolver(schema)
     });
 
@@ -66,15 +67,15 @@ export function Balance() {
             setTypeTransformed('Entrada')
         }
     }
-    
-    useEffect(()=>{
+
+    useEffect(() => {
         if (idCategory !== 0) {
             setIsSelectEmpty(false)
         } else {
             setIsSelectEmpty(true)
         }
-    },[idCategory])
-    
+    }, [idCategory])
+
     async function LoadImage() {
         if (Platform.OS !== 'web') {
             const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync()
@@ -84,7 +85,7 @@ export function Balance() {
         }
     }
 
-    const PickImage = async () => {
+    const PickImageLibrary = async () => {
         LoadImage();
         let result = await ImagePicker.launchImageLibraryAsync({
             mediaTypes: ImagePicker.MediaTypeOptions.Images,
@@ -92,10 +93,24 @@ export function Balance() {
             aspect: [4, 3],
             quality: 1
         })
-
         console.log(result)
         if (!result.canceled) {
             setImgComprove(result.assets[0].uri)
+        }
+    }
+
+    const PickImageCamera = async () => {
+        LoadImage();
+        let permissionResult = await ImagePicker.requestCameraPermissionsAsync()
+        if (permissionResult.granted === false) {
+            alert("You've refused to allow this appp to access your camera!");
+            return;
+        }
+        const result = await ImagePicker.launchCameraAsync();
+        console.log(result)
+        if (!result.canceled) {
+            setImgComprove(result.assets[0].uri);
+            console.log(result.assets[0].uri);
         }
     }
 
@@ -114,78 +129,86 @@ export function Balance() {
 
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <Container>
-            <Form>
-                <Highlight onPress={handleBack} title='Incluir Lançamentos' />
-                <ButtonSelectOpen
-                    onPress={() => setModalVisible(true)}>
-                    <TextButtonSelectOpen isEmpty={isSelectEmpty}>
-                        {category}
-                    </TextButtonSelectOpen>
-                </ButtonSelectOpen>
+            <Container>
+                <Form>
+                    <Highlight onPress={handleBack} title='Incluir Lançamentos' />
+                    <ButtonSelectOpen
+                        onPress={() => setModalVisible(true)}>
+                        <TextButtonSelectOpen isEmpty={isSelectEmpty}>
+                            {category}
+                        </TextButtonSelectOpen>
+                    </ButtonSelectOpen>
 
-                <InputForm 
-                    name='description'
-                    control={control}
-                    error={errors.description && errors.description.message}
-                    placeholder='Descrição' 
-                    autoCapitalize='characters'
-                    autoCorrect={false}
-                />
-                <InputForm 
-                    name='price'
-                    control={control}
-                    error={errors.price && errors.price.message}
-                    placeholder='Valor' 
-                    autoCapitalize='characters'
-                    keyboardType='numeric'
-                />
-                <GroupSwitch>
-                    <TextSwitch isBold={true}>Tipo de movimento:</TextSwitch>
-                    <TextSwitch>
-                        {typeTransformed}
-                    </TextSwitch>
-                    <Switch
-                        trackColor={{ false: '#792ec5', true: '#4b86eb' }}
-                        thumbColor={isEnabled ? '#777' : '#f4f3f4'}
-                        ios_backgroundColor="#3e3e3e"
-                        onValueChange={handleSwitch}
-                        value={isEnabled}
+                    <InputForm
+                        name='description'
+                        control={control}
+                        error={errors.description && errors.description.message}
+                        placeholder='Descrição'
+                        autoCapitalize='characters'
+                        autoCorrect={false}
                     />
-                </GroupSwitch>
-                <GroupImage>
-                    <BtnImage onPress={PickImage}>
-                        <BtnImageText>+ Imagem</BtnImageText>
-                    </BtnImage>
-                    <Image source={{ uri: imgComprove }} style={{
-                        borderWidth: 1,
-                        borderColor: '#bbb',
-                        width: 260,
-                        height: 350
-                    }} />
-                </GroupImage>
-                <ModalView
-                    animationType="fade"
-                    transparent={true}
-                    visible={modalVisible}
-                    onRequestClose={() => {
-                        setModalVisible(!modalVisible);
-                    }}>
-                    <Select 
-                        list={Categories}
-                        setValue={setIdCategory}
-                        setLabel={setCategory}
-                        isModalVisible={modalVisible} 
-                        setIsModalVisible={setModalVisible}
+                    <InputForm
+                        name='price'
+                        control={control}
+                        error={errors.price && errors.price.message}
+                        placeholder='Valor'
+                        autoCapitalize='characters'
+                        keyboardType='numeric'
                     />
-                </ModalView>
-            </Form>
-            <ContainerButton>
-                <Button onPress={handleSubmit(handleSubmitBalance)}>
-                    <TextButton>Incluir</TextButton>
-                </Button>
-            </ContainerButton>
-        </Container>
+                    <GroupSwitch>
+                        <TextSwitch isBold={true}>Tipo de movimento:</TextSwitch>
+                        <TextSwitch>
+                            {typeTransformed}
+                        </TextSwitch>
+                        <Switch
+                            trackColor={{ false: '#792ec5', true: '#4b86eb' }}
+                            thumbColor={isEnabled ? '#777' : '#f4f3f4'}
+                            ios_backgroundColor="#3e3e3e"
+                            onValueChange={handleSwitch}
+                            value={isEnabled}
+                        />
+                    </GroupSwitch>
+
+                    <GroupImage>
+                        <GroupButton>
+                            <BtnImage onPress={PickImageLibrary}>
+                                <BtnImageText>Biblioteca</BtnImageText>
+                            </BtnImage>
+                            <BtnImage onPress={PickImageCamera}>
+                                <BtnImageText>Câmera</BtnImageText>
+                            </BtnImage>
+                        </GroupButton>
+                        <Image source={{ uri: imgComprove }} style={{
+                            borderWidth: 1,
+                            borderColor: '#bbb',
+                            width: 260,
+                            height: 350
+                        }} />
+                    </GroupImage>
+
+                    <ModalView
+                        animationType="fade"
+                        transparent={true}
+                        visible={modalVisible}
+                        onRequestClose={() => {
+                            setModalVisible(!modalVisible);
+                        }}>
+                        <Select
+                            list={Categories}
+                            setValue={setIdCategory}
+                            setLabel={setCategory}
+                            isModalVisible={modalVisible}
+                            setIsModalVisible={setModalVisible}
+                        />
+                    </ModalView>
+
+                </Form>
+                <ContainerButton>
+                    <Button onPress={handleSubmit(handleSubmitBalance)}>
+                        <TextButton>Incluir</TextButton>
+                    </Button>
+                </ContainerButton>
+            </Container>
         </TouchableWithoutFeedback>
     )
 }
